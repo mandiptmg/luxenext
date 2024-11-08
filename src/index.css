@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.sky:hover{
+    background-color: #00b4d8;
+}
+
+.team{
+    clip-path: polygon(0 0, 100% 0%, 100% 84%, 0% 100%);
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .testimonial{
+    clip-path: polygon(50% 68%, 0 0, 100% 0);
+  }
+
+::-webkit-calendar-picker-indicator{
+    background-color: white;
+    border-radius: 10%;
+}
