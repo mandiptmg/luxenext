@@ -11,7 +11,7 @@ const services = [
 
 const RoomServices = () => {
   return (
-    <div className=" p-3 rounded flex flex-wrap justify-between items-center gap-4 ">
+    <div className=" p-3 rounded justify-center  flex flex-wrap w-full  items-center gap-4 ">
       {services.map((service) => (
         <div
           key={service.name}
