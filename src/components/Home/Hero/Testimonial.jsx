@@ -112,7 +112,7 @@ const Testimonial = () => {
         {testimonials.map((testimonial, index) => (
           <div key={index} className=" mt-9 shadow rounded-md bg-[#00b4d8] my-auto mx-5 lg:mx-10">
             <div className=" my-3 shadow-md shadow-[#00b4d8]   w-[350px] scale-x-110 relative  lg:w-[400px] mx-auto  bg-white p-6 rounded-md    ">
-              <FaQuoteLeft className="text-6xl  absolute -top-4 right-0 shadow-md p-4 rounded-full bg-[#00b4d8] " />
+              <FaQuoteLeft className="text-6xl  absolute -top-4 -right-1 shadow-md p-4 rounded-full bg-[#00b4d8] " />
 
               <div className="flex gap-1 text-2xl ">
                 {/* Display stars */}

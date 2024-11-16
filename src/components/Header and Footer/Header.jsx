@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
+import { HamburgerButton } from "./Button/HamburgerButton";
 
 const navlink = [
   {
@@ -50,7 +51,7 @@ const Header = () => {
             </span>
           </div>
         </NavLink>
-        <div className="items-center gap-4 hidden md:inline-flex ">
+        <div className="items-center gap-4 hidden lg:inline-flex ">
           {navlink.map((link) => (
             <NavLink
               key={link.id}
@@ -62,12 +63,15 @@ const Header = () => {
             </NavLink>
           ))}
         </div>
-        <div>
-          <NavLink to={"/booking-room"}>
+        <div className="">
+          <NavLink to={"/booking-room"} className={"hidden lg:block"}>
             <button className="border px-3 py-2 text-white rounded capitalize duration-700 ease-in-out hover:text-black hover:bg-white text-lg font-medium">
               booking online
             </button>
           </NavLink>
+          <button className="lg:hidden">
+            <HamburgerButton />
+          </button>
         </div>
       </div>
     </div>
