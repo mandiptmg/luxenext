@@ -16,7 +16,7 @@ const About = () => {
         }}
       >
         <div className="text-center text-white   font-[Starbon]  ">
-          <h1 className="text-center text-6xl uppercase mb-6 tracking-widest font-bold">
+          <h1 className="text-center text-5xl lg:text-6xl  uppercase mb-6 tracking-widest font-bold">
             About Us
           </h1>
           <span className="text-lg uppercase ">

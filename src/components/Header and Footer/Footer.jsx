@@ -98,7 +98,7 @@ const Footer = () => {
         </div>
         </div>
 
-      <div className="pt-28 pb-7 px-20  bg-black/90 grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 items-start gap-4">
+      <div className="pt-28 pb-7 px-10 lg:px-20  bg-black/90 grid md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 items-start gap-4">
         <div className="relative">
           <div className="shadow-md -mt-48 relative z-40 p-4 bg-[#2a2c2c] rounded ">
             <div className="flex justify-center mt-7 items-center gap-2">
