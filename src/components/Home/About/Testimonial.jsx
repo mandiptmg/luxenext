@@ -86,13 +86,13 @@ const Testimonial = () => {
 
 
   return (
-    <div className="bg-black text-white md:p-20 p-5 ">
+    <div className="bg-black text-white md:p-20 p-10 ">
       <h1 className="font-[Stardom] text-lg text-[#00b4d8]">
         Luxury Hotel And Resort
       </h1>
       <div className="mt-7">
         <div className="flex flex-wrap gap-y-4 justify-between items-center ">
-          <p className="text-3xl md:text-5xl uppercase font-semibold font-serif">
+          <p className="text-3xl md:text-4xl uppercase font-semibold font-serif">
             resote clients feedback <br />
             about services
           </p>
@@ -123,13 +123,11 @@ const Testimonial = () => {
         style={{ scrollBehavior: "smooth" }}
       >
         {testimonials.map((testimonial, index) => (
-          <div className="flex-none w-[400px] mx-2" key={index}>
-            <div className="bg-white text-gray-500 p-6 text-xl text-justify rounded-lg shadow-lg">
-              <div className="h-52 overflow-hidden">
+          <div className="flex-none w-[395px] mx-2" key={index}>
+            <div className="bg-white text-gray-500 p-6 text-lg lg:text-xl text-justify rounded-lg shadow-lg">
                 <q className="block">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nam repudiandae dignissimos, quo distinctio aliquid amet, dolor nesciunt molestias cum quisquam exercitationem harum, dolorum facilis assumenda quae. Corporis, velit magni.
                 </q>
-              </div>
               <div className="flex items-center mt-5 justify-between">
                  <div className="flex gap-1 text-2xl mt-2">
               {/* Display stars */}

@@ -57,29 +57,8 @@ const Header = () => {
             </span>
           </div>
         </NavLink>
-        {/* <div className="items-center gap-4 hidden lg:inline-flex ">
-          {Paths.map((link) => (
-            <div>
 
-            </div>
-            {   
-              link.path ? (
-            <NavLink
-              key={link.id}
-              to={link.path}
-              className={({ isActive }) => `
-              "text-lg font-medium ${
-                isActive ? "text-[#00b4d8]" : "text-gray-100  "
-              }  hover:text-[#00b4d8] transition duration-300 ease-in
-            `}
-            >
-              {link.name}
-            </NavLink>)
-          :
-          <span className="cursor-pointer">{item.name}</span>}
-          ))}
-        </div> */}
-        <nav className=" text-white p-4">
+        <nav className=" text-white p-4 hidden lg:block">
           <ul className="flex gap-8 items-center">
             {Paths.map((item) => (
               <li key={item.id} className="relative group">
@@ -97,43 +76,44 @@ const Header = () => {
                     {item.name}
                   </NavLink>
                 ) : (
-                  <span className="cursor-pointer flex items-center gap-1">{item.name}<ChevronDown className="w-5"/> </span>
+                  <span className="cursor-pointer flex items-center gap-1">
+                    {item.name}
+                    <ChevronDown className="w-5" />{" "}
+                  </span>
                 )}
 
                 {/* Render sub-items if present */}
                 {item.subItems && (
-                <ul
-                className="absolute left-4 mt-2 rounded-md bg-white text-black shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-all duration-300 min-w-[200px]"
-              >
-                {item.subItems.map((subItem, index) => (
-                  <li
-                    key={subItem.id}
-                    className={`p-2 hover:bg-gray-200 ${
-                      index === item.subItems.length - 1
-                        ? "rounded-b-md" // Apply rounded-b-md to the last item
-                        : "rounded-t-md" // Apply rounded-t-md to other items
-                    }`}
-                  >
-                    <NavLink
-                      to={subItem.path}
-                      className={({ isActive }) =>
-                        ` ${
-                          isActive ? "text-[#00b4d8] font-bold" : ""
-                        }`
-                      }
-                    >
-                      {subItem.name}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+                  <ul className="absolute left-4 mt-2 rounded-md bg-white text-black shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-all duration-300 min-w-[200px]">
+                    {item.subItems.map((subItem, index) => (
+                      <li
+                        key={subItem.id}
+                        className={` hover:bg-gray-200 ${
+                          index === item.subItems.length - 1
+                            ? "rounded-b-md" // Apply rounded-b-md to the last item
+                            : "rounded-t-md" // Apply rounded-t-md to other items
+                        }`}
+                      >
+                        <NavLink
+                          to={subItem.path}
+                          className={({ isActive }) =>
+                            `block p-2 ${
+                              isActive ? "text-[#00b4d8] font-bold" : ""
+                            }`
+                          }
+                        >
+                          {subItem.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </li>
             ))}
           </ul>
         </nav>
         <div className="">
-          <NavLink to={"/booking-room"} className={"hidden lg:block"}>
+          <NavLink to={"/rooms/booking-room"} className={"hidden lg:block"}>
             <button className="border px-3 py-2 text-white rounded capitalize duration-700 ease-in-out hover:text-black hover:bg-white text-lg font-medium">
               booking online
             </button>
@@ -149,20 +129,63 @@ const Header = () => {
         }`}
       >
         <div className="">
-          <div className=" w-full grid  ">
+          <ul className=" w-full grid  ">
             {Paths.map((link) => (
-              <NavLink
-                className="p-2 w-full  text-lg font-medium hover:bg-gray-400 hover:text-white transition duration-300 ease-in-out"
-                key={link.id}
-                to={link.path}
-                onClick={() => setActive(false)}
-              >
-                {link.name}
-              </NavLink>
+              <li key={link.id} className="relative group">
+                {link.path ? (
+                  <NavLink
+                    className={({ isActive }) =>
+                      `p-2 w-full block text-lg ${
+                        isActive ? "text-[#00b4d8] " : ""
+                      } font-medium hover:bg-gray-400 hover:text-white transition duration-700 ease-in-out`
+                    }
+                    to={link.path}
+                    onClick={() => setActive(false)}
+                  >
+                    {link.name}
+                  </NavLink>
+                ) : (
+                  <span className="cursor-pointer p-2 text-lg font-medium hover:bg-gray-400 hover:text-white  flex justify-between items-center ">
+                    {link.name}
+                    <ChevronDown className="w-5" />
+                  </span>
+                )}
+                {/* Render sub-items if present */}
+                {link.subItems && (
+                  <ul className="rounded-b-md overflow-hidden max-h-0 group-hover:max-h-full ease-in-out   bg-white  text-black shadow-lg transition-all duration-700 ">
+                    {link.subItems.map((subItem, index) => (
+                      <li
+                        key={subItem.id}
+                        className={` pl-4   hover:bg-gray-50 ${
+                          index === link.subItems.length - 1
+                            ? "rounded-b-md" // Apply rounded-b-md to the last item
+                            : "" // Apply rounded-t-md to other items
+                        }`}
+                      >
+                        <NavLink
+                          onClick={() => setActive(false)}
+                          to={subItem.path}
+                          className={({ isActive }) =>
+                            `block p-2 ${
+                              isActive ? "text-[#00b4d8]  font-bold" : ""
+                            }`
+                          }
+                        >
+                          {subItem.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="mt-7">
-            <NavLink to={"/booking-room"} className={""}>
+            <NavLink
+              to={"/rooms/booking-room"}
+              onClick={() => setActive(false)}
+              className={""}
+            >
               <button className="border w-full  px-3 py-2 bg-white rounded capitalize duration-700 ease-in-out text-black hover:bg-white text-lg font-medium">
                 booking online
               </button>

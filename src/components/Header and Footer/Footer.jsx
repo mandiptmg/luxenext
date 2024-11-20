@@ -50,7 +50,7 @@ const images = [
 
 const Links = [
   { id: 1, path: "about", name: "About Hotel" },
-  { id: 3, path: "rooms", name: "Rooms & suites" },
+  { id: 3, path: "rooms/room", name: "Rooms & suites" },
   { id: 4, path: "services", name: "Reservations" },
   { id: 5, path: "blog", name: "news & blogs" },
   { id: 2, path: "contact", name: "Contact Us" },

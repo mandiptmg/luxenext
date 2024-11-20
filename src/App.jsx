@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Services from "./components/Pages/Services/Services";
 import { useEffect } from "react";
+import Room from "./components/Pages/Room";
 
 function App() {
 
@@ -28,7 +29,8 @@ function App() {
         <Route path="/" exact element={<Home />} />
         <Route path="/about" exact element={<About />} />
         <Route path="/contact" exact element={<Contact />} />
-        <Route path="/booking-room" exact element={<BookingRoom />} />
+        <Route path="/rooms/room" exact element={<Room />} />
+        <Route path="rooms/booking-room" exact element={<BookingRoom />} />
         <Route path="/services" element={<Services />} />
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>
