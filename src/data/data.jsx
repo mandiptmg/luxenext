@@ -14,7 +14,7 @@ export const Paths = [
     { id: 5, name: "Contact Us", path: "/contact" },
   ];
   
-export const Rooms = [
+export const RoomDetails = [
     {
       type: "Small Room",
       location: "Hotel Rome",

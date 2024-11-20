@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Booking from "../booking/Booking";
 import FullContact from "../Contact/FullContact";
+import Rooms from "../Rooms/Rooms";
 
 const BookingRoom = () => {
   return (
@@ -27,9 +28,12 @@ const BookingRoom = () => {
         <h1 className="text-center text-2xl tracking-widest  md:text-4xl font-[Stardom] font-medium mt-20">
           Check Availibity
         </h1>
-        <div className="md:px-20">
+        <div className=" px-10 lg:px-20">
           <div className="my-16">
             <Booking />
+          </div>
+          <div>
+            <Rooms/>
           </div>
           <div>
             <FullContact/>

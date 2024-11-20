@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Rooms } from "../../data/data";
+import { RoomDetails } from "../../data/data";
 
 const steps = [
   {
@@ -127,8 +127,8 @@ const Room = () => {
       </div>
       <div className="my-10 px-10 lg:px-20 grid grid-cols-[1fr,3fr] items-start gap-5">
         <div className=""></div>
-        <div className={`grid ${activeLayout ? 'grid-cols-1': 'grid-cols-3'} grid-cols-3 gap-7 items-start`}>
-          {Rooms.map((room, index) => (
+        <div className={`grid ${activeLayout ? 'grid-cols-1': 'md:grid-cols-2 lg:grid-cols-3'} gap-7 items-start`}>
+          {RoomDetails.map((room, index) => (
             <div key={index} className="">
            
                 <div className={activeLayout ? 'flex items-start' : ''}>

@@ -1,30 +1,18 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-// import required modules
-import { Pagination } from "swiper/modules";
-
+import { CircleUserRound, SquareSquare } from "lucide-react";
 import logo from "../../../assets/logo.png";
 
-// Import image assets
-import img1 from "../../../assets/room/1.jpg";
-import img2 from "../../../assets/room/2.jpg";
-import img3 from "../../../assets/room/3.jpg";
+import { RoomDetails } from "../../../data/data";
+import { useLocation } from "react-router-dom";
 
-const images = [
-  { id: 1, url: img1 },
-  { id: 2, url: img2 },
-  { id: 3, url: img3 },
-];
 
 const Rooms = () => {
+  const location = useLocation();
+  const hidden = location.pathname === "/rooms/booking-room";
+
   return (
     <div className="py-40 px-16">
-      <div className="relative">
+      <div className={`relative ${hidden ? "hidden" : ""}`}>
         <div className="text-center  w-full">
           <div className="h-[2px] max-w-xs shadow-xl bg-gray-300 mx-auto opacity-50"></div>
           <img
@@ -52,32 +40,46 @@ const Rooms = () => {
 
         <div></div>
       </div>
-      <div className="bg-black">
-        <Swiper
-          pagination={{
-            dynamicBullets: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          {images.map((img) => (
-            <SwiperSlide key={img.id}>
-              <div className='relative'>
-                 <img
-                className="aspect-square w-[400px] h-[300px] rounded-t-lg  object-cover"
-                src={img.url}
-                alt="Room interior view with elegant design"
-                loading="lazy"
-              />
-              <span className='bg-[#00b4d8] p-2 font-semibold  text-white '>
-                $400 | Night
-              </span>
-              </div>
+      <div className={`grid md:grid-cols-2 lg:grid-cols-3 sm:-mt-24 gap-7 items-start`}>
+          {RoomDetails.map((room, index) => (
+            <div key={index} className="">
+           
+                <div className={ ''}>
+                  <div className="relative overflow-hidden cursor-pointer">
+                    <img
+                      src={
+                        "https://c4.wallpaperflare.com/wallpaper/170/206/366/interior-style-design-home-wallpaper-preview.jpg"
+                      }
+                      alt="image"
+                      className={`w-full object-cover h-full  transition-transform duration-700 hover:scale-125`}
+                    />
+                    <h1 className="absolute uppercase  tracking-[0.2em] font-light text-sm bg-black text-white hover:bg-[#00b4d8] duration-700 ease-in-out transition-all font-sans py-3 px-6 top-3 right-0">
+                    from  {room.pricePerNight}
+                    </h1>
+                    <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-black/50 w-full">
+                      <div className="flex flex-col p-3 font-sans uppercase tracking-wide text-white gap-3">
+                      <h1 className="font-sans tracking-[0.1em]">
+                      {room.type}
+                    </h1>
+                        <div className="flex text-gray-200 text-sm items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <CircleUserRound />
+                        {room.capacity}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <SquareSquare />
+                        {room.size}
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
              
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
-      </div>
+        </div>
     </div>
   );
 };
