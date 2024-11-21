@@ -41,7 +41,7 @@ const Rooms = () => {
         <div></div>
       </div>
       <div className={`grid md:grid-cols-2 lg:grid-cols-3 sm:-mt-24 gap-7 items-start`}>
-          {RoomDetails.map((room, index) => (
+          {RoomDetails.slice(0,3).map((room, index) => (
             <div key={index} className="">
            
                 <div className={ ''}>
@@ -54,7 +54,7 @@ const Rooms = () => {
                       className={`w-full object-cover h-full  transition-transform duration-700 hover:scale-125`}
                     />
                     <h1 className="absolute uppercase  tracking-[0.2em] font-light text-sm bg-black text-white hover:bg-[#00b4d8] duration-700 ease-in-out transition-all font-sans py-3 px-6 top-3 right-0">
-                    from  {room.pricePerNight}
+                    from  {room.pricePerNight} $
                     </h1>
                     <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-black/50 w-full">
                       <div className="flex flex-col p-3 font-sans uppercase tracking-wide text-white gap-3">
@@ -64,11 +64,11 @@ const Rooms = () => {
                         <div className="flex text-gray-200 text-sm items-center gap-4">
                       <div className="flex items-center gap-2">
                         <CircleUserRound />
-                        {room.capacity}
+                        {room.capacity} Guests
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex lowercase items-center gap-2">
                         <SquareSquare />
-                        {room.size}
+                        {room.size} ft
                       </div>
                     </div>
                       </div>

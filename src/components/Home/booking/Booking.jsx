@@ -2,13 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
-const Booking = () => {
-  const [checkInDate, setCheckInDate] = useState(new Date());
-  const [checkOutDate, setCheckOutDate] = useState(new Date());
-  const [guests, setGuests] = useState(1);
+// eslint-disable-next-line react/prop-types
+const Booking = ({guests,setGuests}) => {
+  const location = useLocation();
+  const validPaths = ["/", "/rooms/booking-room"];
+  const pathname = validPaths.includes(location.pathname);
+  const [checkInDate, setCheckInDate] = useState(() => {
+    const savedCheckIn = localStorage.getItem("checkInDate");
+    return savedCheckIn ? new Date(savedCheckIn) : new Date();
+  });
+  const [checkOutDate, setCheckOutDate] = useState(() => {
+    const savedCheckOut = localStorage.getItem("checkOutDate");
+    return savedCheckOut ? new Date(savedCheckOut) : new Date();
+  });
   const [activePicker, setActivePicker] = useState(null); // Controls active picker
-  const pickerRef = useRef(null); // Refs for picker containers
+  const checkInRef = useRef(null); // Ref for Check-In picker
+  const checkOutRef = useRef(null); // Ref for Check-Out picker
 
   // Toggle specific picker
   const togglePicker = (picker) => {
@@ -18,9 +29,13 @@ const Booking = () => {
   // Close active picker when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (pickerRef.current && !pickerRef.current.contains(event.target)) {
-        setActivePicker(null);
+      if (
+        (checkInRef.current && checkInRef.current.contains(event.target)) ||
+        (checkOutRef.current && checkOutRef.current.contains(event.target))
+      ) {
+        return; // Do nothing if clicking inside any picker
       }
+      setActivePicker(null); // Close picker if clicking outside
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -28,6 +43,12 @@ const Booking = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Save changes to localStorage
+  useEffect(() => {
+    localStorage.setItem("checkInDate", checkInDate.toISOString());
+    localStorage.setItem("checkOutDate", checkOutDate.toISOString());
+  }, [checkInDate, checkOutDate]);
 
   // Increment and decrement guests
   const incrementGuests = () => {
@@ -38,11 +59,19 @@ const Booking = () => {
     if (guests > 1) setGuests(guests - 1); // Min 1 guest
   };
 
+  // Calculate nights between check-in and check-out
+  const calculateNights = () => {
+    const timeDiff = checkOutDate - checkInDate;
+    return timeDiff > 0 ? Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) : 0;
+  };
+
+  const nights = calculateNights();
+
   return (
-    <div className="flex items-center justify-center relative z-30 pb-10">
-      <div className="grid lg:grid-cols-4 gap-4 bg-white p-6 shadow-md rounded-md w-full max-w-4xl">
+    <div className={`flex items-center justify-center relative z-30 ${pathname ? 'pb-10' : ''} `}>
+      <div className={`grid  ${pathname ?'lg:grid-cols-4' :  'grid-cols-2'  }  gap-4 bg-white p-6 shadow-md rounded-md w-full max-w-4xl`}>
         {/* Check-In */}
-        <div className="relative flex flex-col items-center" ref={pickerRef}>
+        <div className="relative flex flex-col items-center" ref={checkInRef}>
           <span className="text-gray-500 font-semibold text-sm uppercase tracking-widest">
             Check-In
           </span>
@@ -72,14 +101,14 @@ const Booking = () => {
                 }}
                 inline
                 className="rounded-lg shadow-md border-none"
-                minDate={new Date()} // Prevent selecting past dates
+                minDate={new Date()} // Today or later
               />
             </div>
           )}
         </div>
 
         {/* Check-Out */}
-        <div className="relative flex flex-col items-center" ref={pickerRef}>
+        <div className="relative flex flex-col items-center" ref={checkOutRef}>
           <span className="text-gray-500 font-semibold text-sm uppercase tracking-widest">
             Check-Out
           </span>
@@ -109,7 +138,7 @@ const Booking = () => {
                 }}
                 inline
                 className="rounded-lg shadow-md border-none"
-                minDate={checkInDate || new Date()} // Ensure check-out is after check-in
+                minDate={checkInDate} // Ensure check-out is after check-in
               />
             </div>
           )}
@@ -141,8 +170,25 @@ const Booking = () => {
           </div>
         </div>
 
+        {/* Nights and Availability */}
+        <div
+          className={` ${
+            pathname ? "hidden" : ""
+          } relative flex flex-col items-center`}
+        >
+          <span className="text-gray-500 font-semibold text-sm uppercase tracking-widest">
+            Nights
+          </span>
+          <div className="mt-3">
+            <span className="text-6xl font-light leading-none">{nights}</span>
+            <span className="text-sm text-gray-500 ml-2">nights</span>
+          </div>
+        </div>
+
         {/* Check Availability Button */}
-        <button className="w-full bg-black text-white text-sm font-[Stardom] uppercase font-thin tracking-widest px-4  py-3 rounded-md hover:bg-[#00b4d8] transition-all">
+        <button  className={` ${
+            pathname ? "" : "hidden"
+          } w-full bg-black text-white text-sm font-[Stardom] uppercase font-thin tracking-widest px-4  py-3 rounded-md hover:bg-[#00b4d8] transition-all`}>
           Check Availability
         </button>
       </div>
