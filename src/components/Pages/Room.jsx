@@ -221,102 +221,108 @@ const Room = () => {
             <Booking guests={guests} setGuests={setGuests} />
           </div>
         </div>
-        <div
-          className={`grid ${
-            activeLayout ? "grid-cols-1" : "md:grid-cols-2 xl:grid-cols-3"
-          } gap-7 items-start`}
-        >
-          {filteredRooms.map((room, index) => (
-            <div key={index} className="">
-              <div className={activeLayout ? "flex items-start" : ""}>
-                {/* image  */}
-                <div className="relative ">
-                  <img
-                    src={
-                      "https://c4.wallpaperflare.com/wallpaper/170/206/366/interior-style-design-home-wallpaper-preview.jpg"
-                    }
-                    alt="image"
-                    className={`w-full object-cover ${
-                      activeLayout ? "h-[260px]" : "h-full"
-                    }`}
-                  />
-                  <span className="absolute top-3 right-1 bg-red-600 p-1 tracking-[0.2em] uppercase text-[8px] text-white">
-                    {room.available_room}
-                  </span>
-                  <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-black/50 w-full">
-                    <div className="flex text-sm p-3 font-sans uppercase tracking-wide text-white items-center gap-3">
-                      <h1>{room.location}</h1>
-                      <div className="flex gap-1 text-2xl ">
-                        {/* Display stars */}
-                        {[...Array(room.rate)].map((_, starIndex) => (
-                          <span
-                            key={starIndex}
-                            className="text-white text-sm  "
-                          >
-                            ★
-                          </span>
-                        ))}
-                        {[...Array(5 - room.rate)].map((_, emptyIndex) => (
-                          <span
-                            key={emptyIndex}
-                            className="text-gray-300 text-sm "
-                          >
-                            ★
-                          </span>
-                        ))}
+        {filteredRooms.length === 0 || !filteredRooms ? (
+          <div className="text-center font-sans  uppercase text-2xl grid place-items-center w-full h-full text-gray-500">
+            No rooms available.
+          </div>
+        ) : (
+          <div
+            className={`grid ${
+              activeLayout ? "grid-cols-1" : "md:grid-cols-2 xl:grid-cols-3"
+            } gap-7 items-start`}
+          >
+            {filteredRooms.map((room, index) => (
+              <div key={index} className="">
+                <div className={activeLayout ? "flex items-start" : ""}>
+                  {/* image  */}
+                  <div className="relative ">
+                    <img
+                      src={
+                        "https://c4.wallpaperflare.com/wallpaper/170/206/366/interior-style-design-home-wallpaper-preview.jpg"
+                      }
+                      alt="image"
+                      className={`w-full object-cover ${
+                        activeLayout ? "h-[260px]" : "h-full"
+                      }`}
+                    />
+                    <span className="absolute top-3 right-1 bg-red-600 p-1 tracking-[0.2em] uppercase text-[8px] text-white">
+                      {room.available_room}
+                    </span>
+                    <div className="absolute bottom-0 left-0 bg-gradient-to-b from-transparent to-black/50 w-full">
+                      <div className="flex text-sm p-3 font-sans uppercase tracking-wide text-white items-center gap-3">
+                        <h1>{room.location}</h1>
+                        <div className="flex gap-1 text-2xl ">
+                          {/* Display stars */}
+                          {[...Array(room.rate)].map((_, starIndex) => (
+                            <span
+                              key={starIndex}
+                              className="text-white text-sm  "
+                            >
+                              ★
+                            </span>
+                          ))}
+                          {[...Array(5 - room.rate)].map((_, emptyIndex) => (
+                            <span
+                              key={emptyIndex}
+                              className="text-gray-300 text-sm "
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="border font-sans space-y-3 p-4">
-                  <h1 className="text-gray-700 text-2xl font-light tracking-widest">
-                    {room.type}
-                  </h1>
-                  <div className="flex text-gray-400 items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <CircleUserRound />
-                      {room.capacity} Guests
+                  <div className="border font-sans space-y-3 p-4">
+                    <h1 className="text-gray-700 text-2xl font-light tracking-widest">
+                      {room.type}
+                    </h1>
+                    <div className="flex text-gray-400 items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <CircleUserRound />
+                        {room.capacity} Guests
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <SquareSquare />
+                        {room.size} ft
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <SquareSquare />
-                      {room.size} ft
-                    </div>
-                  </div>
-                  <p className="text-gray-400 text-sm text-justify ">
-                    {room.description.slice(0, 120)}...
-                  </p>
-                  <div className="relative group items-center inline-flex border-2 hover:border-[#00b4d8] duration-700 transition-all ease-in ">
-                    <button className="group-hover:text-[#00b4d8] text-black uppercase font-sans text-sm   duration-700 transition-all ease-in tracking-widest px-6 py-3 bg-transparent">
-                      book now for {room.pricePerNight} $
-                    </button>
-                    <span className="px-6 py-3 font-[stardom] duration-700 transition-all ease-in bg-black text-white  group-hover:bg-[#00b4d8]">
-                      i
-                    </span>
-                  </div>
-                  <hr />
-                  <div className="flex justify-between items-center">
-                    <ul className="flex items-center gap-2">
-                      {room.services.map((service, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center space-x-2 text-gray-700"
-                        >
-                          <span className="text-sm">{service.icon}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <button className="flex group items-center hover:text-[#00b4d8] font-light gap-2 uppercase duration-700 transition-all ease-in ">
-                      full info{" "}
-                      <span className="group-hover:translate-x-4 duration-700 transition-all ease-in-out">
-                        <ChevronRight />
+                    <p className="text-gray-400 text-sm text-justify ">
+                      {room.description.slice(0, 120)}...
+                    </p>
+                    <div className="relative group items-center inline-flex border-2 hover:border-[#00b4d8] duration-700 transition-all ease-in ">
+                      <button className="group-hover:text-[#00b4d8] text-black uppercase font-sans text-sm   duration-700 transition-all ease-in tracking-widest px-6 py-3 bg-transparent">
+                        book now for {room.pricePerNight} $
+                      </button>
+                      <span className="px-6 py-3 font-[stardom] duration-700 transition-all ease-in bg-black text-white  group-hover:bg-[#00b4d8]">
+                        i
                       </span>
-                    </button>
+                    </div>
+                    <hr />
+                    <div className="flex justify-between items-center">
+                      <ul className="flex items-center gap-2">
+                        {room.services.map((service, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-center space-x-2 text-gray-700"
+                          >
+                            <span className="text-sm">{service.icon}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <button className="flex group items-center hover:text-[#00b4d8] font-light gap-2 uppercase duration-700 transition-all ease-in ">
+                        full info{" "}
+                        <span className="group-hover:translate-x-4 duration-700 transition-all ease-in-out">
+                          <ChevronRight />
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}       
       </div>
     </div>
   );
