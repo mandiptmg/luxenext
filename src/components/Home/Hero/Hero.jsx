@@ -40,7 +40,8 @@ const Hero = () => {
         ))}
 
       </Swiper>
-    </div>
+  
+       </div>
   );
 };
 

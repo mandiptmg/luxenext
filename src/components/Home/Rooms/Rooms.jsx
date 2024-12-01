@@ -3,7 +3,7 @@ import { CircleUserRound, SquareSquare } from "lucide-react";
 import logo from "../../../assets/logo.png";
 
 import { RoomDetails } from "../../../data/data";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 
 const Rooms = () => {
@@ -43,7 +43,7 @@ const Rooms = () => {
       <div className={`grid md:grid-cols-2 lg:grid-cols-3 sm:-mt-24 gap-7 items-start`}>
           {RoomDetails.slice(0,3).map((room, index) => (
             <div key={index} className="">
-           
+           <NavLink to ={ `/rooms/room/${room.slug}`}>
                 <div className={ ''}>
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -76,7 +76,7 @@ const Rooms = () => {
                   </div>
                 
                 </div>
-             
+             </NavLink>
             </div>
           ))}
         </div>

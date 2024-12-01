@@ -17,6 +17,7 @@ export const Paths = [
 export const RoomDetails = [
   {
     type: "Small Room",
+    slug: "small-room",
     location: "Hotel Rome",
     capacity: 1,
     size: 15,
@@ -34,6 +35,7 @@ export const RoomDetails = [
   },
   {
     type: "Large Room",
+    slug: "large-room",
     location: "Hotel Rome",
     capacity: 2,
     size: 25,
@@ -52,11 +54,11 @@ export const RoomDetails = [
   },
   {
     type: "Small Apartment",
+    slug: "small-apartment",
     location: "Rome City Center",
     capacity: 3,
     size: 30,
     rate: 5,
-
     pricePerNight: 90,
     available_room: "Not Available",
     description:
@@ -70,11 +72,11 @@ export const RoomDetails = [
   },
   {
     type: "Studio Apartment",
+    slug: "studio-apartment",
     location: "Rome Suburbs",
     capacity: 2,
     size: 28,
     rate: 5,
-
     pricePerNight: 65,
     available_room: "Not Available",
     description:
@@ -88,11 +90,11 @@ export const RoomDetails = [
   },
   {
     type: "Deluxe Room",
+    slug: "deluxe-room",
     location: "Hotel Venice",
     capacity: 2,
     size: 20,
     rate: 5,
-
     pricePerNight: 125,
     available_room: "Not Available",
     description:
@@ -106,11 +108,11 @@ export const RoomDetails = [
   },
   {
     type: "Family Apartment",
+    slug: "family-apartment",
     location: "Rome Outskirts",
     capacity: 5,
     size: 50,
     rate: 5,
-
     pricePerNight: 150,
     available_room: "Not Available",
     description:
@@ -124,3 +126,63 @@ export const RoomDetails = [
     ],
   },
 ];
+
+
+
+export const Amenities = {
+  loungeBar: [
+    {
+      name: "Skyline Lounge",
+      location: "Hotel Rome - Rooftop",
+      description:
+        "Enjoy breathtaking views of the city while sipping on signature cocktails and mocktails.",
+      icon: "🍹",
+    },
+    {
+      name: "Cozy Corner Bar",
+      location: "Hotel Venice",
+      description:
+        "A relaxed space with a wide range of wines, craft beers, and light snacks.",
+      icon: "🍺",
+    },
+  ],
+  restaurants: [
+    {
+      name: "Gourmet Dine",
+      location: "Hotel Rome",
+      description:
+        "A fine-dining experience featuring a mix of Italian and international cuisines.",
+      icon: "🍽️",
+    },
+    {
+      name: "Trattoria Delizia",
+      location: "Rome City Center",
+      description:
+        "Authentic Italian cuisine made with the freshest ingredients and traditional recipes.",
+      icon: "🍝",
+    },
+  ],
+  wellness: [
+    {
+      name: "Heavenly Spa",
+      location: "Hotel Venice",
+      description:
+        "Relax and rejuvenate with our signature spa treatments, massages, and therapies.",
+      icon: "💆‍♀️",
+    },
+    {
+      name: "Zen Fitness Center",
+      location: "Rome Suburbs",
+      description:
+        "A state-of-the-art fitness facility equipped with modern machines and personal trainers.",
+      icon: "🏋️",
+    },
+    {
+      name: "Aqua Wellness",
+      location: "Hotel Rome",
+      description:
+        "Hydrotherapy sessions and saunas to detox and unwind in luxury.",
+      icon: "🛁",
+    },
+  ],
+};

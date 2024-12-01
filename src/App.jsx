@@ -9,6 +9,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Services from "./components/Pages/Services/Services";
 import { useEffect } from "react";
 import Room from "./components/Pages/Room";
+import RoomDetail from "./components/Pages/RoomDetail/RoomDetail";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/contact" exact element={<Contact />} />
         <Route path="/rooms/room" exact element={<Room />} />
         <Route path="rooms/booking-room" exact element={<BookingRoom />} />
+        <Route path="rooms/room/:slug" exact element={<RoomDetail />} />
         <Route path="/services" element={<Services />} />
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>

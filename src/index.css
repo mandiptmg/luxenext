@@ -28,6 +28,11 @@
     border-radius: 10%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 
 .testimonial-scroll::-webkit-scrollbar {
   width: 0; /* scrollbar width for body */
