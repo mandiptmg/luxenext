@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { RoomDetails } from "../../../data/data";
 import { BedDouble, CircleUserRound, SquareSquare } from "lucide-react";
 import { Amenities } from "../../../data/data";
+import Booking from "../../Home/booking/Booking";
 const RoomDetail = () => {
   const { slug } = useParams();
 
@@ -166,7 +167,9 @@ const RoomDetail = () => {
                 </div>
               </div>
             </div>
-            <div>{/* dfbsbsfb */}</div>
+            <div>
+              <Booking/>
+            </div>
           </div>
           <hr className="mt-10" />
 

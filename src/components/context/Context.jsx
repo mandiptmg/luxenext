@@ -6,10 +6,12 @@ const AppContext = createContext(null);
 export const AppProvider = ({ children }) => {
   const [play, setPlay] = useState(false);
   const [active, setActive] = useState(false);
-
+  const [guests, setGuests] = useState(1);
 
   return (
-    <AppContext.Provider value={{ play, setPlay, active, setActive }}>
+    <AppContext.Provider
+      value={{ play, setPlay, active, setActive, guests, setGuests }}
+    >
       {children}
     </AppContext.Provider>
   );

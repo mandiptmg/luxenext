@@ -7,9 +7,10 @@ import {
   SquareSquare,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RoomDetails } from "../../data/data";
 import Booking from "../Home/booking/Booking";
+import { UseGlobalContext } from "../context/Context";
 
 const steps = [
   {
@@ -73,14 +74,7 @@ const Room = () => {
     stayprice: "",
     roomsize: "",
   });
-  const [guests, setGuests] = useState(() => {
-    const savedGuests = localStorage.getItem("guests");
-    return savedGuests ? Number(savedGuests) : 1;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("guests", guests);
-  }, [guests]);
+  const { guests } = UseGlobalContext();
 
   const handleFilterChange = (type, value) => {
     setSelectedFilters((prevFilters) => ({
@@ -218,7 +212,7 @@ const Room = () => {
                 </ul>
               }
             </div>
-            <Booking guests={guests} setGuests={setGuests} />
+            <Booking/>
           </div>
         </div>
         {filteredRooms.length === 0 || !filteredRooms ? (
