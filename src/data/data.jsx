@@ -186,3 +186,47 @@ export const Amenities = {
     },
   ],
 };
+
+
+export const luxenestFAQ = [
+  {
+    question: "What is the check-in and check-out time at Hotel Luxenest?",
+    answer: "Check-in time is 2:00 PM, and check-out time is 11:00 AM."
+  },
+  {
+    question: "Does Hotel Luxenest offer free Wi-Fi?",
+    answer: "Yes, we offer complimentary high-speed Wi-Fi throughout the property."
+  },
+  {
+    question: "Are pets allowed at Hotel Luxenest?",
+    answer: "Unfortunately, pets are not allowed at our hotel."
+  },
+  {
+    question: "Does Hotel Luxenest have parking facilities?",
+    answer: "Yes, we provide free on-site parking for our guests."
+  },
+  {
+    question: "Is breakfast included in the room rate?",
+    answer: "Yes, a complimentary buffet breakfast is included in the room rate."
+  },
+  {
+    question: "Does the hotel have a swimming pool?",
+    answer: "Yes, we have an outdoor swimming pool available for guests."
+  },
+  {
+    question: "What are the cancellation policies for Hotel Luxenest?",
+    answer: "Cancellations made at least 48 hours before check-in are free of charge. For cancellations within 48 hours, a one-night fee applies."
+  },
+  {
+    question: "Does Hotel Luxenest provide airport transportation?",
+    answer: "Yes, we offer airport shuttle services at an additional charge. Please contact the front desk to arrange transportation."
+  },
+  {
+    question: "Are there any nearby attractions to Hotel Luxenest?",
+    answer: "Yes, we are located close to several attractions such as the City Museum, Riverside Park, and the Downtown Shopping District."
+  },
+  {
+    question: "Can I host events or meetings at Hotel Luxenest?",
+    answer: "Yes, we have event and meeting spaces equipped with modern facilities. Contact our event team for bookings."
+  }
+];

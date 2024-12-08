@@ -10,6 +10,7 @@ import Services from "./components/Pages/Services/Services";
 import { useEffect } from "react";
 import Room from "./components/Pages/Room";
 import RoomDetail from "./components/Pages/RoomDetail/RoomDetail";
+import Faq from "./components/Pages/Faq/Faq";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="rooms/booking-room" exact element={<BookingRoom />} />
         <Route path="rooms/room/:slug" exact element={<RoomDetail />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>
       <Footer />
