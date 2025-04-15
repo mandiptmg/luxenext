@@ -32,7 +32,7 @@ const Services = () => {
             />
           </div>
         </div>
-        <div className="md:px-20  -mt-20  sm:-mt-36">
+        <div className="md:px-20  mt-20  sm:-mt-36">
           <RoomServices />
         </div>
       </div>
