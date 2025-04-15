@@ -40,7 +40,7 @@ const Rooms = () => {
 
         <div></div>
       </div>
-      <div className={`grid md:grid-cols-2 lg:grid-cols-3 md:-mt-24 gap-7 items-start`}>
+      <div className={`grid md:grid-cols-2 lg:grid-cols-3 mt-0 md:-mt-24 gap-7 items-start`}>
           {RoomDetails.slice(0,3).map((room, index) => (
             <div key={index} className="">
            <NavLink to ={ `/rooms/room/${room.slug}`}>
